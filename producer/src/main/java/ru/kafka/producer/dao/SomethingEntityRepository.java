@@ -1,6 +1,6 @@
 package ru.kafka.producer.dao;
 
-import ru.kafka.producer.dto.model.SomethingEntity;
+import ru.kafka.producer.dto.model.ProducerEntity;
 
 import java.util.UUID;
 
@@ -13,5 +13,5 @@ public interface SomethingEntityRepository {
     /**
      * Получить данные для id
      */
-    SomethingEntity getDataForId(UUID id);
+    ProducerEntity getDataForId(UUID id);
 }

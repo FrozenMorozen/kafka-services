@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class SomethingEntity {
+public class ProducerEntity {
     private String name;
     private Long sum;
     private Long multiplier;

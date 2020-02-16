@@ -2,7 +2,7 @@ package ru.kafka.producer.dao.mock;
 
 import org.springframework.stereotype.Service;
 import ru.kafka.producer.dao.SomethingEntityRepository;
-import ru.kafka.producer.dto.model.SomethingEntity;
+import ru.kafka.producer.dto.model.ProducerEntity;
 
 import java.util.UUID;
 
@@ -12,7 +12,7 @@ import java.util.UUID;
 @Service
 public class SomethingEntityRepositoryMock implements SomethingEntityRepository {
     @Override
-    public SomethingEntity getDataForId(UUID id) {
-        return new SomethingEntity("name", 1L, 2L);
+    public ProducerEntity getDataForId(UUID id) {
+        return new ProducerEntity("name", 1L, 2L);
     }
 }

@@ -21,8 +21,11 @@ import java.util.Map;
 @Configuration
 public class KafkaConfiguration {
 
-    @Autowired
-    private KafkaProperties kafkaProperties;
+    private final KafkaProperties kafkaProperties;
+
+    public KafkaConfiguration(KafkaProperties kafkaProperties) {
+        this.kafkaProperties = kafkaProperties;
+    }
 
     @Bean
     public ConsumerFactory<String, String> consumerFactory() {
