@@ -28,24 +28,6 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ConsumerFactory<String, String> consumerFactory() {
-        Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
-                !kafkaProperties.getBootstrapServers().isEmpty() ? kafkaProperties.getBootstrapServers().get(0) : null);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getConsumer().getGroupId());
-        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        return new DefaultKafkaConsumerFactory<>(config);
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
-        return factory;
-    }
-
-    @Bean
     public ConsumerFactory<String, ConsumerEntity> consumerEntityConsumerFactory() {
         JsonDeserializer<ConsumerEntity> consumerEntityDeserializer = new JsonDeserializer<>(ConsumerEntity.class);
         consumerEntityDeserializer.addTrustedPackages("*");
@@ -55,14 +37,14 @@ public class KafkaConfiguration {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 !kafkaProperties.getBootstrapServers().isEmpty() ? kafkaProperties.getBootstrapServers().get(0) : null);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getConsumer().getGroupId());
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), consumerEntityDeserializer);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, ConsumerEntity> consumerEntityKafkaListenerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, ConsumerEntity> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, ConsumerEntity> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerEntityConsumerFactory());
         return factory;
