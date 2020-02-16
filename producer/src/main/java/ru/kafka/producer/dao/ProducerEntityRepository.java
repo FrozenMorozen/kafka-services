@@ -8,7 +8,7 @@ import java.util.UUID;
  * Это может быть сервис обеспечивающий доступ к БД
  * или получающий данные из другого микросервиса(из kafka)
  */
-public interface SomethingEntityRepository {
+public interface ProducerEntityRepository {
 
     /**
      * Получить данные для id
