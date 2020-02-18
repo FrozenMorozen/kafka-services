@@ -24,11 +24,11 @@ public class ConsumerEntityDeserializer extends StdDeserializer<ConsumerEntity> 
     public ConsumerEntity deserialize(JsonParser jp, DeserializationContext ctxt)
             throws IOException, JsonProcessingException {
         JsonNode node = jp.getCodec().readTree(jp);
-        String uuid = null; // TODO: поддержать алгоритм транзакий у продюсера
-        String name = node.get("name").asText();
-        String multipliedSum = String.valueOf(
-                (Integer) ((IntNode) node.get("sum")).numberValue() *
-                (Integer) ((IntNode) node.get("multiplier")).numberValue());
-        return new ConsumerEntity(uuid, name, multipliedSum);
+        ConsumerEntity consumerEntity = new ConsumerEntity();
+        consumerEntity.setName(node.get("name").asText());
+        consumerEntity.setMultipliedSum(
+                String.valueOf((Integer) ((IntNode) node.get("sum")).numberValue() *
+                        (Integer) ((IntNode) node.get("multiplier")).numberValue()));
+        return new ConsumerEntity();
     }
 }

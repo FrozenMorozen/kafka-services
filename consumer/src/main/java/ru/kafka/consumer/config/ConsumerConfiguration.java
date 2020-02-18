@@ -19,11 +19,11 @@ import java.util.Map;
 
 @EnableKafka
 @Configuration
-public class KafkaConfiguration {
+public class ConsumerConfiguration {
 
     private final KafkaProperties kafkaProperties;
 
-    public KafkaConfiguration(KafkaProperties kafkaProperties) {
+    public ConsumerConfiguration(KafkaProperties kafkaProperties) {
         this.kafkaProperties = kafkaProperties;
     }
 
@@ -31,8 +31,8 @@ public class KafkaConfiguration {
     public ConsumerFactory<String, ConsumerEntity> consumerEntityConsumerFactory() {
         JsonDeserializer<ConsumerEntity> consumerEntityDeserializer = new JsonDeserializer<>(ConsumerEntity.class);
         consumerEntityDeserializer.addTrustedPackages("*");
-        consumerEntityDeserializer.setRemoveTypeHeaders(false);
         consumerEntityDeserializer.setUseTypeMapperForKey(true);
+//        consumerEntityDeserializer.setUseTypeHeaders(true);
 
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,

@@ -7,7 +7,6 @@ import ru.kafka.consumer.dto.serialization.ConsumerEntityDeserializer;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @JsonDeserialize(using = ConsumerEntityDeserializer.class)
 public class ConsumerEntity {
