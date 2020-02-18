@@ -2,7 +2,7 @@ package ru.kafka.producer.dao.mock;
 
 import org.springframework.stereotype.Service;
 import ru.kafka.producer.dao.ProducerEntityRepository;
-import ru.kafka.producer.dto.model.ProducerEntity;
+import ru.kafka.producer.dao.entity.ProducerEntity;
 
 import java.util.UUID;
 
@@ -13,6 +13,7 @@ import java.util.UUID;
 public class ProducerEntityRepositoryMock implements ProducerEntityRepository {
     @Override
     public ProducerEntity getDataForId(UUID id) {
+        // Какой-нибудь запрос или метод для получения dao сущности
         return new ProducerEntity("name", 1L, 2L);
     }
 }

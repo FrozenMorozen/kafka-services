@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import ru.kafka.producer.dto.model.ProducerEntity;
+import ru.kafka.producer.dto.model.ProducerModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    ProducerFactory<String, ProducerEntity> createProducerFactory() {
+    ProducerFactory<String, ProducerModel> createProducerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 !kafkaProperties.getBootstrapServers().isEmpty() ? kafkaProperties.getBootstrapServers().get(0) : null);
@@ -34,9 +34,10 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public KafkaTemplate<String, ProducerEntity> kafkaTemplate() {
-        return new KafkaTemplate<>(createProducerFactory());
+    public KafkaTemplate<String, ProducerModel> kafkaTemplate() {
+        KafkaTemplate<String, ProducerModel> template = new KafkaTemplate<>(createProducerFactory());
+        template.setDefaultTopic(kafkaProperties.getTemplate().getDefaultTopic());
+        return template;
     }
-
 
 }

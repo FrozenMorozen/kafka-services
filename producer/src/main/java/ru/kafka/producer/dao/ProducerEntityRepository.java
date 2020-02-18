@@ -1,12 +1,11 @@
 package ru.kafka.producer.dao;
 
-import ru.kafka.producer.dto.model.ProducerEntity;
+import ru.kafka.producer.dao.entity.ProducerEntity;
 
 import java.util.UUID;
 
 /**
- * Это может быть сервис обеспечивающий доступ к БД
- * или получающий данные из другого микросервиса(из kafka)
+ * Это может быть сервис обеспечивающий доступ к БД или получающий данные из другого микросервиса
  */
 public interface ProducerEntityRepository {
 

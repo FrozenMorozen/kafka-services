@@ -1,19 +1,18 @@
 package ru.kafka.producer.service;
 
-import ru.kafka.producer.dto.model.ProducerEntity;
+import ru.kafka.producer.dto.model.ProducerModel;
 
 import java.util.UUID;
 
 /**
- * Сервис для обработки модели {@link ProducerEntity}
+ * Сервис для обработки модели {@link ProducerModel}
  */
 public interface ProducerDataService {
 
     /**
-     * Предположил, что для полученного через entry point UUID
-     * требуется получить модель {@link ProducerEntity}
+     * Для полученного через entry point UUID требуется получить модель {@link ProducerModel}
      *
      * @param uuid id для получения сущности
      */
-    ProducerEntity getSomethingDataForUUID(UUID uuid);
+    ProducerModel getSomethingDataForUUID(UUID uuid);
 }

@@ -9,7 +9,6 @@ public interface ProducerService {
 
     /**
      * Отправить сообщение с id
-     *
      * @return информация о результате отправки
      */
     String send(UUID id);
