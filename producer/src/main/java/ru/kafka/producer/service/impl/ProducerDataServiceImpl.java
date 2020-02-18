@@ -22,7 +22,7 @@ public class ProducerDataServiceImpl implements ProducerDataService {
     public ProducerEntity getSomethingDataForUUID(UUID uuid) {
         // Имимтация вызова сервиса, который по UUID получает данные
         ProducerEntity entityForSend = producerEntityRepository.getDataForId(uuid);
-        log.debug("Для id =\"" + uuid + "\" получена сущность: " + entityForSend);
+        log.info("Для id =\"" + uuid + "\" получены данные: " + entityForSend);
         return entityForSend;
     }
 }

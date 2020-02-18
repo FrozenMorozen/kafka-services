@@ -22,7 +22,7 @@ public class ProducerController {
 
     @GetMapping("/{id}")
     public String post(@PathVariable("id") final String id) {
-        log.debug("Полученный UUID : " + id);
+        log.info("UUID from http : " + id);
         return producerService.send(UUID.fromString(id));
     }
 }

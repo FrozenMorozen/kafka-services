@@ -1,6 +1,5 @@
 package ru.kafka.producer.config;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -14,7 +13,7 @@ import ru.kafka.producer.dto.model.ProducerEntity;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
+
 @Configuration
 public class KafkaConfiguration {
 

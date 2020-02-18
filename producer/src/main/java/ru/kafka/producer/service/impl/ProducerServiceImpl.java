@@ -14,6 +14,8 @@ import java.util.UUID;
 @Service
 public class ProducerServiceImpl implements ProducerService {
 
+    private static final String SUCCESSFUL_SENDING_INFO = "Published successfully!\n";
+
     private final KafkaTemplate<String, ProducerEntity> kafkaTemplate;
     private final ProducerDataService producerDataService;
     private final KafkaProperties kafkaProperties;
@@ -34,6 +36,6 @@ public class ProducerServiceImpl implements ProducerService {
                 .setHeader("UUID", id)
                 .build();
         kafkaTemplate.send(message);
-        return "Published successfully!\n";
+        return SUCCESSFUL_SENDING_INFO;
     }
 }

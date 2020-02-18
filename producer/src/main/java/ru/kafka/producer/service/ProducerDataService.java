@@ -11,7 +11,8 @@ public interface ProducerDataService {
 
     /**
      * Предположил, что для полученного через entry point UUID
-     * требуется получить сущность {@link ProducerEntity}
+     * требуется получить модель {@link ProducerEntity}
+     *
      * @param uuid id для получения сущности
      */
     ProducerEntity getSomethingDataForUUID(UUID uuid);
