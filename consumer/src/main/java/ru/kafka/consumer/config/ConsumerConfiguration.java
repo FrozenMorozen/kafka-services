@@ -32,7 +32,6 @@ public class ConsumerConfiguration {
         JsonDeserializer<ConsumerEntity> consumerEntityDeserializer = new JsonDeserializer<>(ConsumerEntity.class);
         consumerEntityDeserializer.addTrustedPackages("*");
         consumerEntityDeserializer.setUseTypeMapperForKey(true);
-//        consumerEntityDeserializer.setUseTypeHeaders(true);
 
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,
