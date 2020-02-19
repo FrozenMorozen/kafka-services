@@ -1,26 +1,35 @@
 # spring-services
+
+Все команды нужно выполнять из директории: **spring-services**
+
 **Конфигурация**
-В случае, если kafka уже запущен, нужно указать параметры сервера для consumer и producer.
+В случае, если  преполагается использование kafka не из этого приложения, нужно изменить параметры сервера для consumer и producer.
 Для этого необходимо:\
- 1.) изменить значения `.server` в следующих файлах:
+ 1.) изменить параметры сервера kafka в следующих файлах:
+ `producer/src/main/resources/server.properties`
+ `consumer/src/main/resources/server.properties`
+ 2.) пересобрать приложение:
+ `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`
+ 
 ___
-##Запуск приложения
-Для запуска нужно выполнить команды в терминале:
+###Запуск приложения
 
 **1.) Запуск Kafka-server**\
-`$ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-kafka/master/docker-compose.yml > docker-compose.yml`
-`$ docker-compose up -d`
+`kafka_docker_compose/docker-compose up -d`
 По умолчанию используется порт 9092(для zookeeper: 2181)
+Для измененя отредактировать параметры `zookeeper-server` и `kafka-server1` в файле kafka_docker_compose/docker-compose.yml
 
  **2.) Producer**\
-`$ java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`
+`java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`
 По умолчанию указан адрес localhost:8081.
-Для изменения нужно отредактировать настройку `server.port=8081` в файле /home/denis/IdeaProjects/spring-services/producer/src/main/resources/application.properties
+Для изменения отредактировать настройку `server.port=8081` в файле producer/src/main/resources/application.properties
 
  **3.) Consumer**\
-`$ java -jar consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar`
+`java -jar consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar`
+По умолчанию указан адрес localhost:8081.
+Для изменения отредактировать настройку `server.port=8081` в файле consumer/src/main/resources/application.properties
+
 ___
 
-# Тестирование
+### Тестирование
 `$ curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`
-
