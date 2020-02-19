@@ -12,12 +12,12 @@
  `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`\
  
 ___
-##Запуск приложения
+###### ЗАПУСК ПРИЛОЖЕНИЯ
 
 **1.) Запуск Kafka-server**\
 `kafka_docker_compose/docker-compose up -d`\
 По умолчанию используется порт 9092(для zookeeper: 2181)\
-Для измененя отредактировать параметры `zookeeper-server` и `kafka-server1` в файле kafka_docker_compose/docker-compose.yml
+Для измененя отредактировать параметры `zookeeper-server` и `kafka-server1` в файле _kafka_docker_compose/docker-compose.yml_
 
  **2.) Producer**\
 `java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`\
