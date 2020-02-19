@@ -11,22 +11,24 @@
  `consumer/src/main/resources/server.properties`\
  
  2.) пересобрать приложение:\
- `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`\
+ `cd producer && ./gradlew clean build && cd .. && cd consumer && ./gradlew clean build && cd ..`\
  
 ___
-###### ЗАПУСК ПРИЛОЖЕНИЯ
+#### ЗАПУСК ПРИЛОЖЕНИЯ
 
 **1.) Запуск Kafka-server**\
-`kafka_docker_compose/docker-compose up -d`\
+`cd kafka_docker_compose/ && docker-compose up -d && cd ..`\
 По умолчанию используется порт 9092(для zookeeper: 2181)\
 Для измененя отредактировать параметры `zookeeper-server` и `kafka-server1` в файле _kafka_docker_compose/docker-compose.yml_
 
  **2.) Producer**\
+ В отдельной вкладке(или окне) терминала:\
 `java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`\
 По умолчанию указан адрес localhost:8081.\
 Для изменения отредактировать настройку `server.port=8081` в файле _producer/src/main/resources/application.properties_
 
  **3.) Consumer**\
+ В отдельной вкладке(или окне) терминала:\
 `java -jar consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar`\
 По умолчанию указан адрес localhost:8081.\
 Для изменения отредактировать настройку `server.port=8081` в файле _consumer/src/main/resources/application.properties_
@@ -34,8 +36,5 @@ ___
 ___
 
 ### Тестирование
-`$ curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`
 
-___
-###### ЗАВЕРШЕНИЕ РАБОТЫ
-`cd kafka_docker_compose/ && docker-compose stop && cd ..`
+`curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`
