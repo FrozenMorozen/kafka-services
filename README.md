@@ -2,31 +2,31 @@
 
 Все команды нужно выполнять из директории: **spring-services**
 
-**Конфигурация**
+**Конфигурация**\
 В случае, если  преполагается использование kafka не из этого приложения, нужно изменить параметры сервера для consumer и producer.
 Для этого необходимо:\
- 1.) изменить параметры сервера kafka в следующих файлах:
- `producer/src/main/resources/server.properties`
+ 1.) изменить параметры сервера kafka в следующих файлах:\
+ `producer/src/main/resources/server.properties`\
  `consumer/src/main/resources/server.properties`
- 2.) пересобрать приложение:
- `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`
+ 2.) пересобрать приложение:\
+ `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`\
  
 ___
-###Запуск приложения
+##Запуск приложения
 
 **1.) Запуск Kafka-server**\
-`kafka_docker_compose/docker-compose up -d`
-По умолчанию используется порт 9092(для zookeeper: 2181)
+`kafka_docker_compose/docker-compose up -d`\
+По умолчанию используется порт 9092(для zookeeper: 2181)\
 Для измененя отредактировать параметры `zookeeper-server` и `kafka-server1` в файле kafka_docker_compose/docker-compose.yml
 
  **2.) Producer**\
-`java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`
-По умолчанию указан адрес localhost:8081.
+`java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`\
+По умолчанию указан адрес localhost:8081.\
 Для изменения отредактировать настройку `server.port=8081` в файле producer/src/main/resources/application.properties
 
  **3.) Consumer**\
-`java -jar consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar`
-По умолчанию указан адрес localhost:8081.
+`java -jar consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar`\
+По умолчанию указан адрес localhost:8081.\
 Для изменения отредактировать настройку `server.port=8081` в файле consumer/src/main/resources/application.properties
 
 ___
