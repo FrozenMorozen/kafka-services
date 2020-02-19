@@ -13,6 +13,7 @@
  2.) пересобрать приложение:\
  `cd producer && ./gradlew clean build && cd .. && cd consumer && ./gradlew clean build && cd ..`
  
+ 3.) Приступить к разделу **ЗАПУСК ПРИЛОЖЕНИЯ** с п. 2
 ___
 #### ЗАПУСК ПРИЛОЖЕНИЯ
 
