@@ -38,7 +38,7 @@ ___
 #### ТЕСТИРОВАНИЕ
 
 `curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`
-
+___
 #### Завершение работы
 
 `cd kafka_docker_compose/ && docker-compose stop && docker-compose rm -v -f && cd ..`

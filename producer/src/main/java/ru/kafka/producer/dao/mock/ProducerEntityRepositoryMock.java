@@ -13,6 +13,9 @@ import java.util.UUID;
 public class ProducerEntityRepositoryMock implements ProducerEntityRepository {
     @Override
     public ProducerEntity getDataForId(UUID id) {
+        if (id == null) {
+            return null;
+        }
         // Какой-нибудь запрос или метод для получения dao сущности
         return new ProducerEntity("name", 1L, 2L);
     }
