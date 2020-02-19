@@ -29,6 +29,6 @@ public class ConsumerEntityDeserializer extends StdDeserializer<ConsumerEntity> 
         consumerEntity.setMultipliedSum(
                 String.valueOf((Integer) ((IntNode) node.get("sum")).numberValue() *
                         (Integer) ((IntNode) node.get("multiplier")).numberValue()));
-        return new ConsumerEntity();
+        return consumerEntity;
     }
 }
