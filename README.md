@@ -7,7 +7,7 @@
 Для этого необходимо:\
  1.) изменить параметры сервера kafka в следующих файлах:\
  `producer/src/main/resources/server.properties`\
- `consumer/src/main/resources/server.properties`
+ `consumer/src/main/resources/server.properties`\
  2.) пересобрать приложение:\
  `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`\
  
@@ -22,12 +22,12 @@ ___
  **2.) Producer**\
 `java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`\
 По умолчанию указан адрес localhost:8081.\
-Для изменения отредактировать настройку `server.port=8081` в файле producer/src/main/resources/application.properties
+Для изменения отредактировать настройку `server.port=8081` в файле _producer/src/main/resources/application.properties_
 
  **3.) Consumer**\
 `java -jar consumer/build/libs/consumer-0.0.1-SNAPSHOT.jar`\
 По умолчанию указан адрес localhost:8081.\
-Для изменения отредактировать настройку `server.port=8081` в файле consumer/src/main/resources/application.properties
+Для изменения отредактировать настройку `server.port=8081` в файле _consumer/src/main/resources/application.properties_
 
 ___
 
