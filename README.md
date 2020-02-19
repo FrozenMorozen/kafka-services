@@ -1,13 +1,15 @@
 # spring-services
 
-Все команды нужно выполнять из директории: **spring-services**
+Все команды нужно выполнять из теущей директории (**spring-services**)
 
 **Конфигурация**\
-В случае, если  преполагается использование kafka не из этого приложения, нужно изменить параметры сервера для consumer и producer.
+В случае, если  преполагается использование kafka не из этого приложения, нужно изменить параметры сервера для consumer и producer.\
 Для этого необходимо:\
+ 
  1.) изменить параметры сервера kafka в следующих файлах:\
  `producer/src/main/resources/server.properties`\
  `consumer/src/main/resources/server.properties`\
+ 
  2.) пересобрать приложение:\
  `cd producer && ./gradlew clean build && cd consumer && ./gradlew clean build && cd ..`\
  
@@ -33,3 +35,7 @@ ___
 
 ### Тестирование
 `$ curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`
+
+___
+###### ЗАВЕРШЕНИЕ РАБОТЫ
+`cd kafka_docker_compose/ && docker-compose stop && cd ..`
