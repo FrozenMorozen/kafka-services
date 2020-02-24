@@ -2,8 +2,6 @@ package ru.kafka.consumer.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +10,8 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
-import ru.kafka.consumer.dto.model.ConsumerEntity;
+import ru.kafka.consumer.dao.model.ConsumerDaoEntity;
+import ru.kafka.consumer.dto.model.ConsumerModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +27,8 @@ public class ConsumerConfiguration {
     }
 
     @Bean
-    public ConsumerFactory<String, ConsumerEntity> consumerEntityConsumerFactory() {
-        JsonDeserializer<ConsumerEntity> consumerEntityDeserializer = new JsonDeserializer<>(ConsumerEntity.class);
+    public ConsumerFactory<String, ConsumerDaoEntity> consumerEntityConsumerFactory() {
+        JsonDeserializer<ConsumerDaoEntity> consumerEntityDeserializer = new JsonDeserializer<>(ConsumerDaoEntity.class);
         consumerEntityDeserializer.addTrustedPackages("*");
         consumerEntityDeserializer.setUseTypeMapperForKey(true);
 
@@ -43,8 +42,8 @@ public class ConsumerConfiguration {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, ConsumerEntity> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, ConsumerEntity> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, ConsumerDaoEntity> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, ConsumerDaoEntity> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerEntityConsumerFactory());
         return factory;
     }
