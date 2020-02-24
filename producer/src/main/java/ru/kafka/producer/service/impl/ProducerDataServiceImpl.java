@@ -1,6 +1,7 @@
 package ru.kafka.producer.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.kafka.producer.dao.ProducerEntityRepository;
 import ru.kafka.producer.dao.entity.ProducerEntity;
@@ -17,6 +18,7 @@ public class ProducerDataServiceImpl implements ProducerDataService {
     private final ProducerEntityRepository producerEntityRepository;
     private final ConverterDto<ProducerModel, ProducerEntity> producerDtoConverter;
 
+    @Autowired
     public ProducerDataServiceImpl(ProducerEntityRepository producerEntityRepository, ConverterDto<ProducerModel, ProducerEntity> producerDtoConverter) {
         this.producerEntityRepository = producerEntityRepository;
         this.producerDtoConverter = producerDtoConverter;
@@ -25,7 +27,9 @@ public class ProducerDataServiceImpl implements ProducerDataService {
     @Override
     public ProducerModel getSomethingDataForUUID(UUID uuid) {
         ProducerModel dtoModel = producerDtoConverter.convert(producerEntityRepository.getDataForId(uuid));
-        log.info("Для id =\"" + uuid + "\" получены данные: " + dtoModel);
+        if (dtoModel != null) {
+            log.info("Для id =\"" + uuid + "\" получены данные: " + dtoModel);
+        }
         return dtoModel;
     }
 }

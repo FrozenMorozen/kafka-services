@@ -5,14 +5,12 @@ import ru.kafka.producer.dto.model.ProducerModel;
 import java.util.UUID;
 
 /**
- * Сервис для обработки модели {@link ProducerModel}
+ * Сервис для агрегирования данных в dto модели приложения
  */
 public interface ProducerDataService {
 
     /**
-     * Для полученного через entry point UUID требуется получить модель {@link ProducerModel}
-     *
-     * @param uuid id для получения сущности
+     * Для полученного по http UUID получить модель {@link ProducerModel}
      */
     ProducerModel getSomethingDataForUUID(UUID uuid);
 }

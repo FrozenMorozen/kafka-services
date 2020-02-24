@@ -12,8 +12,4 @@ public interface ConverterDto<T extends DtoModel, C> {
      */
     T convert(C source);
 
-    /**
-     * Ковертация в DAO сущность. Может потребоваться при записи в БД
-     */
-    C convert(T source);
 }
