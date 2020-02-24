@@ -19,14 +19,14 @@ ___
 **2.) Producer**\
  В отдельной вкладке(или окне) терминала:\
 **`cd producer && ./gradlew clean build && cd .. && java -jar producer/build/libs/producer-0.0.1-SNAPSHOT.jar`**\
-По умолчанию указан адрес localhost:8081\
+По умолчанию указан адрес _localhost:8081_\
 Для изменения отредактировать настройку `server.port=8081` в файле\
 _producer/src/main/resources/application.properties_
 
 **3.) Consumer**\
  В отдельной вкладке(или окне) терминала:\
 **`cd consumer && ./gradlew clean build && java -jar build/libs/consumer-0.0.1-SNAPSHOT.jar`**\
-По умолчанию указан адрес localhost:8081\
+По умолчанию указан адрес _localhost:8081_\
 Для изменения отредактировать настройку `server.port=8081` в файле\
 _consumer/src/main/resources/application.properties_
 
@@ -34,10 +34,10 @@ ___
 
 #### ТЕСТИРОВАНИЕ
 
-`curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`\
+**`curl http://localhost:8081/test/94433b5a-31ab-469e-a80d-7f77d8445683`**
 
 Логи для consumer см. в `consumer/logs/consumer.log`
 ___
 #### ЗАВЕРШЕНИЕ РАБОТЫ
 
-`cd kafka_docker_compose/ && docker-compose stop && docker-compose rm -v -f && cd ..`
+**`cd kafka_docker_compose/ && docker-compose stop && docker-compose rm -v -f && cd ..`**
